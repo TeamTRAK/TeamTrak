@@ -50,9 +50,10 @@
   });
 
   function php_email_form_submit(thisForm, action, formData) {
-    fetch(action, {
+    console.log(Object.fromEntries(formData.entries()));
+	fetch(action, {
       method: 'POST',
-      body: formData,
+      body: JSON.stringify(Object.fromEntries(formData.entries())),
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
